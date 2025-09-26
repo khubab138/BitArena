@@ -45,7 +45,7 @@ const HangmanDrawing = ({
 
   const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
   return (
-    <div className="relative  h-80 w-50  overflow-y-hidden border-foreground">
+    <div className="relative  h-60 w-40  overflow-y-hidden border-foreground">
       {isLoser ? (
         <div className="rotate-10">{BODY_PARTS.slice(0, numberOfGuesses)}</div>
       ) : (
@@ -57,12 +57,7 @@ const HangmanDrawing = ({
       <div className="h-18 w-1 bg-foreground rotate-40 top-0 left-13 absolute " />
       <div className="h-15 w-1 bg-foreground rotate-40 bottom-0 left-7 absolute" />
       <div className="h-15 w-1 bg-foreground -rotate-40 bottom-0 left-13 absolute" />
-      <div className="h-1 w-50 bg-foreground bottom-1 absolute" />
-
-      {/* <div className="h-2 w-40 bg-foreground ml-15" />
-      // <div className="h-12 w-2 bg-foreground top-0 right-45 absolute" />
-      <div className="h-80 w-2 bg-foreground ml-15" />
-      <div className="h-2 w-full bg-foreground " /> */}
+      <div className="h-1 w-40 bg-foreground bottom-1 absolute" />
     </div>
   );
 };

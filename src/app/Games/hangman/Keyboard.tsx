@@ -55,7 +55,7 @@ const Keyboard: FC<KeyboardProps> = ({
             onClick={() => addguessedletter(key)}
             disabled={isButtonDisabled}
             className={`
-              w-10 h-10 p-1 m-1 text-2xl uppercase border-2 rounded transition-colors duration-150
+              w-8 h-8 p-1 m-1 text-xl flex items-center justify-center uppercase border-2 rounded transition-colors duration-150
               ${isActive ? "bg-blue-500 text-white border-blue-500" : ""}
               ${
                 isInactive

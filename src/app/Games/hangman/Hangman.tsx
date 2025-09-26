@@ -43,7 +43,7 @@ const Hangman = () => {
     return () => document.removeEventListener("keypress", handler);
   }, [addGuessedLetter]);
 
-  // Handle "Enter" press to restart the game
+  // Handle Enter
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key !== "Enter") return;
@@ -57,11 +57,25 @@ const Hangman = () => {
     return () => document.removeEventListener("keypress", handler);
   }, []);
 
+  function PlayAgain() {
+    setGuessedLetters([]);
+    setWordToGuess(getRandomWord());
+  }
+
   return (
-    <div className="max-w-[800px] top-20 flex flex-col gap-[2rem] mx-auto items-center">
-      <div className="text-2xl text-center">
-        {isWinner && " Winner! Press Enter to play again."}
-        {isLoser && " Nice try! Press Enter to try again."}
+    <div className="max-w-[500px]  flex flex-col gap-5 mx-auto items-center">
+      <div className="h-10 text-xl text-center">
+        {isWinner && " Winner!"}
+        {isLoser && " Nice try! "}
+        {isWinner ||
+          (isLoser && (
+            <button
+              onClick={PlayAgain}
+              className=" rounded-lg text-lg px-2 mx-1 py-1 text-chart-2 hover:bg-background/60 active:bg-background/60"
+            >
+              Play Again
+            </button>
+          ))}
       </div>
 
       <HangmanDrawing
