@@ -38,7 +38,7 @@ const TicTacToe_Custom = () => {
     const size = board.length;
 
     // Check rows
-    for (let row of board) {
+    for (const row of board) {
       if (row.every((cell) => cell && cell === row[0])) return row[0];
     }
 

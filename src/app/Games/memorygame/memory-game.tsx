@@ -20,14 +20,14 @@ const MemoryGame: React.FC = () => {
     setWinner(false);
   }
 
-  function gridGeneration(): CardType[] {
+  const gridGeneration = React.useCallback((): CardType[] => {
     const gridSize = Array.from({ length: size }, (_, index) => index + 1);
     const Grids = [...gridSize, ...gridSize].sort(() => Math.random() - 0.5);
     const Card = Grids.map((grid, index) => {
       return { id: index, numbers: grid, isFliped: false };
     });
     return Card;
-  }
+  }, [size]);
 
   function handleFliped(index: number): void {
     if (CARDS[index].isFliped || isLock) {
@@ -60,7 +60,7 @@ const MemoryGame: React.FC = () => {
 
   useEffect(() => {
     if (CARDS.every((cards) => cards.isFliped)) {
-      setWinner(!winner);
+      setWinner((prev) => !prev);
     }
   }, [CARDS]);
 
@@ -68,7 +68,7 @@ const MemoryGame: React.FC = () => {
     if (size > 0) {
       SetCARDS(gridGeneration());
     }
-  }, [size]);
+  }, [size, gridGeneration]);
 
   return (
     <div className="flex flex-col items-center">
