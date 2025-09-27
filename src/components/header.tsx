@@ -1,9 +1,9 @@
 "use client";
-import { Moon, Sun, UserCircle } from "lucide-react";
+import { Moon, Sun, User } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./context/theme-provider";
 import Navigations from "./Navigations";
-import CustomButton from "./Custom-Button";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -36,8 +36,16 @@ const Header = () => {
           <div className="flex items-center justify-between md:px-5 lg:w-1/8 ">
             {/*Login*/}
             <div className=" md:flex hidden">
-              <CustomButton title="SignIn" />
-              <CustomButton title="SignUp" />
+              <div className="flex mx-2">
+                <SignedOut>
+                  <SignInButton>
+                    <User className="mx-1 h-6 w-6 hover:text-primary active:text-secondary cursor-pointer  rounded-full text-foreground" />
+                  </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
             </div>
             {/*theme*/}
             <div

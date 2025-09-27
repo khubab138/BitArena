@@ -1,11 +1,18 @@
 "use client";
 
-import { Divide, Menu, MoveDownIcon, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-import CustomButton from "./Custom-Button";
+
 import { NavItem } from "@/lib/type";
 import { NavOptions } from "@/lib/data";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Navigations = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -75,9 +82,20 @@ const Navigations = () => {
               {nav.title}
             </Link>
           ))}
-          <div className="flex flex-col mt-30">
-            <CustomButton title="Sign Up" />
-            <CustomButton title="Sign In" />
+          <div className="flex justify-between mt-30 bg-background/90 m-2 rounded-lg">
+            <SignedOut>
+              <SignInButton>
+                <User className="mx-1 h-8 w-8 active:text-secondary  rounded-full text-foreground" />
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignUpButton>
+              <h1 className=" text-foreground mr-2 p-1 active:text-secondary text-center ">
+                Create Account
+              </h1>
+            </SignUpButton>
           </div>
         </div>
       </div>
