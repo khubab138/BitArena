@@ -3,7 +3,7 @@ import { CardProps, NavItem } from "./type";
 export const CARDS: CardProps[] = [
   {
     title: "Memory Game",
-    link: "/Games/memorygame",
+    link: "/gameboard/memorygame",
     bgColor: "bg-[#45515F]",
     imgSrc: "memory.png",
     imgalt: "abstract_swirl",
@@ -12,7 +12,7 @@ export const CARDS: CardProps[] = [
   },
   {
     title: "TicTacToe",
-    link: "/Games/tictactoe",
+    link: "/gameboard/tictactoe",
     bgColor: "bg-[#A6CEC5]",
     imgSrc: "tictactoe.png",
     imgalt: "tictactoe",
@@ -22,7 +22,7 @@ export const CARDS: CardProps[] = [
 
   {
     title: "HangMan",
-    link: "/Games/hangman",
+    link: "/gameboard/hangman",
     bgColor: "bg-[#A6CEC5]",
     imgSrc: "hangman.png",
     imgalt: "guillotine",
@@ -34,13 +34,14 @@ export const CARDS: CardProps[] = [
 export const NavOptions: NavItem[] = [
   { title: "About", link: "/about" },
   { title: "Info", link: "/info" },
+  { title: "Dashboard", link: "/dashboard" },
   {
     title: "Games",
     link: "/",
     subOptions: [
-      { title: "TicTacToe", link: "/Games/tictactoe" },
-      { title: "Memory", link: "/Games/memorygame" },
-      { title: "HangMan", link: "/Games/hangman" },
+      { title: "TicTacToe", link: "/gameboard/tictactoe" },
+      { title: "Memory", link: "/gameboard/memorygame" },
+      { title: "HangMan", link: "/gameboard/hangman" },
     ],
   },
 ];

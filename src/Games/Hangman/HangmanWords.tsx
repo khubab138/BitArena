@@ -10,11 +10,11 @@ const HangmanWords = ({
   Reveal = false,
 }: HangmanWordsProps) => {
   return (
-    <div className="flex gap-3 text-4xl font-bold uppercase font-mono ">
+    <div className="flex gap-3 text-4xl font-bold uppercase  font-mono ">
       {wordToGuess.split("").map((letter, index) => (
         <span key={index} className="border-b-7 border-black">
           <span
-            className={`${
+            className={`text-foreground ${
               guessedLetters.includes(letter) || Reveal
                 ? "visible"
                 : "invisible"

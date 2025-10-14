@@ -56,7 +56,7 @@ const Keyboard: FC<KeyboardProps> = ({
             disabled={isButtonDisabled}
             className={`
               w-8 h-8 p-1 m-1 text-xl flex items-center justify-center uppercase border-2 rounded transition-colors duration-150
-              ${isActive ? "bg-blue-500 text-white border-blue-500" : ""}
+              ${isActive ? "bg-blue-500 text-white border-blue-500 " : ""}
               ${
                 isInactive
                   ? "bg-gray-300 text-white border-gray-300 cursor-not-allowed"
