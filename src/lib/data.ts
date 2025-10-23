@@ -34,7 +34,7 @@ export const CARDS: CardProps[] = [
 export const NavOptions: NavItem[] = [
   { title: "About", link: "/about" },
   { title: "Info", link: "/info" },
-  { title: "Dashboard", link: "/dashboard" },
+
   {
     title: "Games",
     link: "/",

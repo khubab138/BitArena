@@ -1,6 +1,11 @@
 "use client";
 
+import { UserState } from "@/lib/type";
+import { useUpdateUsersMutation } from "@/Store/firestoreAPI";
+import { RootState } from "@/Store/store";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import XP from "../XP";
 
 type CardType = {
   id: number;
@@ -18,6 +23,11 @@ const MemoryGame_Logic: React.FC = () => {
   const [time, setTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState(false);
   const [playAgain, setPlayAgain] = useState(false);
+  // Fetching Data
+  const UserName: UserState = useSelector((state: RootState) => state.User);
+  const [updateUsers] = useUpdateUsersMutation();
+
+  const { xp, level, xpToNext, coin, handleMatch } = XP();
   //Stop Watch
   useEffect(() => {
     let interval: number | undefined;
@@ -100,7 +110,7 @@ const MemoryGame_Logic: React.FC = () => {
 
   useEffect(() => {
     if (CARDS.every((cards) => cards.isFliped)) {
-      setWinner((prev) => true);
+      setWinner(true);
     }
   }, [CARDS]);
 
@@ -110,6 +120,22 @@ const MemoryGame_Logic: React.FC = () => {
     }
   }, [size, gridGeneration]);
 
+  // Updating XP
+  useEffect(() => {
+    if (winner) {
+      handleMatch("win");
+    }
+  }, [winner]);
+
+  //setting a data to server
+  useEffect(() => {
+    if (winner) {
+      updateUsers({
+        id: UserName.PLayerId,
+        data: { level: level, xp: xp, xpToNext: xpToNext, coin: coin },
+      });
+    }
+  }, [winner, xp, level]);
   return (
     <div className="flex flex-col items-center px-2">
       {size ? (
@@ -146,7 +172,7 @@ const MemoryGame_Logic: React.FC = () => {
                     <div className="flex justify-center">
                       {!playAgain ? (
                         <h1 className="text-xl text-center">
-                          sure! wanted to{" "}
+                          Ready to{" "}
                           <button
                             onClick={() => {
                               setWinner(false);
@@ -154,7 +180,7 @@ const MemoryGame_Logic: React.FC = () => {
                             }}
                             className="text-destructive active:text-destructive/70 hover:text-destructive/70"
                           >
-                            play again
+                            Replay
                           </button>{" "}
                           or{" "}
                           <button

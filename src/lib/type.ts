@@ -15,3 +15,23 @@ export type NavItem = {
     link: string;
   }[];
 };
+
+export interface UserState {
+  PlayerName: string;
+  PLayerId: string;
+  PlayerEmail: String;
+  level: number;
+  xp: number;
+  coin: number;
+  xpToNext: number;
+}
+
+export type SetUsersPayload = {
+  Id: string;
+  name: string;
+  email: string;
+  level: number;
+  xp: number;
+  coin: number;
+  xpToNext: number;
+};
