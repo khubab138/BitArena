@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${process.env.AI_SECRET_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_AI_SECRET_KEY}`,
           "Content-Type": "application/json",
           "HTTP-Referer": "http://localhost:3000",
           "X-Title": "HangmanAI",

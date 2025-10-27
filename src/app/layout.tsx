@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import StoreProvider from "@/Store/StoreProvider";
 import AuthProvider from "@/components/context/Auth-Provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -39,6 +40,7 @@ export default function RootLayout({
                   <main className="min-h-screen  container mx-auto px-4 py-8">
                     {children}
                   </main>
+                  <Toaster position="top-center" />
                   <footer className="border-t backdrop-blur py-8 supports-[backdrop-filter]:bg-background/60">
                     <div className="container mx-auto px-4 text-center">
                       <Footer />

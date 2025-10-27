@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Store/store";
 import { useUpdateUsersMutation } from "@/Store/firestoreAPI";
 import XP from "../XP";
+import { showXP } from "@/components/XPAmimation";
 
 const getRandomWord = () => words[Math.floor(Math.random() * words.length)];
 
@@ -87,10 +88,13 @@ const Hangman_Logic = () => {
   useEffect(() => {
     if (isWinner) {
       handleMatch("win");
+      showXP("win", 100);
     } else if (isLoser) {
       handleMatch("lose");
+      showXP("lose", 50);
     } else if (hint) {
       handleMatch("draw");
+      showXP("draw", 20);
     }
   }, [isWinner, isLoser, hint]);
 
@@ -114,7 +118,7 @@ const Hangman_Logic = () => {
           <div className="transform -translate-x-20 md:translate-x-0  absolute top-8 left-35 h-5 min-w-50 max-w-100">
             <div className="relative flex items-center px-2 sm:w-[50] md:min-w-[250px] mx-auto text-lg text-center leading-relaxed border-2 border-foreground/50 rounded-full">
               {isWinner
-                ? "That was close!"
+                ? "That's, close!"
                 : isLoser
                 ? "Poetic, isn’t it?"
                 : hint && (

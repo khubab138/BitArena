@@ -6,6 +6,7 @@ import { RootState } from "@/Store/store";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import XP from "../XP";
+import { showXP } from "@/components/XPAmimation";
 
 type CardType = {
   id: number;
@@ -54,7 +55,7 @@ const MemoryGame_Logic: React.FC = () => {
   //Level Handling
   function handleSizeButton(): void {
     inputSize === "easy"
-      ? setSize(8)
+      ? setSize(2)
       : inputSize === "medium"
       ? setSize(12)
       : inputSize === "hard" && setSize(16);
@@ -134,6 +135,7 @@ const MemoryGame_Logic: React.FC = () => {
         id: UserName.PLayerId,
         data: { level: level, xp: xp, xpToNext: xpToNext, coin: coin },
       });
+      showXP("win", 100);
     }
   }, [winner, xp, level]);
   return (

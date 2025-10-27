@@ -8,6 +8,7 @@ import { RootState } from "@/Store/store";
 import { fetchAIMove } from "./AiMove";
 import XP from "../XP";
 import { useUpdateUsersMutation } from "@/Store/firestoreAPI";
+import { showXP } from "@/components/XPAmimation";
 
 const TicTacToe_Logic = () => {
   const [inputValue, setInputValue] = useState("3");
@@ -159,9 +160,12 @@ const TicTacToe_Logic = () => {
   useEffect(() => {
     if (winner === "O") {
       handleMatch("win");
+      showXP("win", 100);
     } else if (winner === "X") {
       handleMatch("lose");
+      showXP("lose", 50);
     } else if (draw) {
+      showXP("draw", 20);
       handleMatch("draw");
     }
   }, [winner, draw]);

@@ -14,7 +14,7 @@ export default function GameDashboardLayout({
   return (
     <div className="min-h-screen grid grid-cols-12 grid-rows-[50px_auto_50px] gap-2 p-2">
       <div className="bg-foreground/20 rounded-lg py-2 col-span-12 md:col-start-4 md:col-span-6 row-start-1 flex items-center ">
-        <div className="p-4 grid md:grid-cols-2 sm:grid-rows w-full">
+        <div className="px-3 grid md:grid-cols-2 sm:grid-rows w-full">
           <div className=" flex flex-col">
             <h1 className="text-md sm:text-sm font-semibold text-ring">
               {userInfo.PlayerName}
@@ -24,7 +24,7 @@ export default function GameDashboardLayout({
             </h1>
           </div>
 
-          <div className=" flex items-center ">
+          <div className=" flex items-center pr-4 ">
             <div className="flex mx-1">
               <Coins className="text-yellow-500 mx-1" />
               <h1 className="font-bold"> {userInfo.coin}</h1>
@@ -35,9 +35,9 @@ export default function GameDashboardLayout({
             </div>
             <div className="flex mx-2">
               <h1 className="mx-1 font-bold text-chart-2">XP</h1>
-              <h1 className=" font-bold">+{userInfo.xp}</h1>
+              <h1 className=" font-bold">{userInfo.xp}</h1>
             </div>
-            <div className="flex mx-2">
+            <div className="flex mr-2">
               <div className="flex mx-2 text-yellow-400">
                 +<Coins />
               </div>

@@ -85,11 +85,13 @@ const Navigations = () => {
           <div className="flex justify-between mt-30 bg-background/90 m-2 rounded-lg">
             <SignedOut>
               <SignInButton>
-                <User className="mx-1 h-8 w-8 active:text-secondary  rounded-full text-foreground" />
+                <User className="ml-2 h-8 w-8 active:text-secondary  rounded-full text-foreground" />
               </SignInButton>
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <div className="ml-1 mt-1">
+                <UserButton />
+              </div>
             </SignedIn>
             <SignUpButton>
               <h1 className=" text-foreground mr-2 p-1 active:text-secondary text-center ">
