@@ -7,7 +7,7 @@ export const fetchAIMove = async (
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer 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`,
           "Content-Type": "application/json",
           "HTTP-Referer": "http://localhost:3000",
           "X-Title": "tictactoe",

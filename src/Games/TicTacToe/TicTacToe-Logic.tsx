@@ -9,6 +9,7 @@ import { fetchAIMove } from "./AiMove";
 import XP from "../XP";
 import { useUpdateUsersMutation } from "@/Store/firestoreAPI";
 import { showXP } from "@/components/XPAmimation";
+import { truncate } from "fs";
 
 const TicTacToe_Logic = () => {
   const [inputValue, setInputValue] = useState("3");
@@ -88,7 +89,7 @@ const TicTacToe_Logic = () => {
     return null;
   }
 
-  const winner = checkWinner(board2D);
+  const winner = checkWinner(board2D as string[][]);
 
   // Handle a cell click
   const [clickedIndex, setClickedIndex] = useState<number[]>([]);
@@ -139,10 +140,10 @@ const TicTacToe_Logic = () => {
     const i = index;
     setClickedIndex((prev) => [...prev, i]);
 
-    const aiResponse = await fetchAIMove(gameState);
+    const aiResponse = await fetchAIMove(gameState as (string | null)[]);
     isXTurn && setGameState(aiResponse);
-    const updatedState = [...gameState];
-    updatedState[index] = !isXTurn && "O";
+    const updatedState: (string | number | null)[] = [...gameState];
+    updatedState[index] = !isXTurn ? "O" : "X";
     setGameState(updatedState);
     setIsXTurn(!isXTurn);
   }
@@ -201,14 +202,14 @@ const TicTacToe_Logic = () => {
           <div className="mb-5 w-full max-w-[60vw] px-2 overflow-x-auto">
             <div className="flex justify-between gap-5">
               <div
-                className={`w-[20vw] px-4 py-2 text-sm lg:text-xl md:text-xl  sm:text-base rounded-bl-4xl rounded-tr-4xl font-normal whitespace-nowrap ${
+                className={`truncate w-[20vw] px-4 py-2 text-sm lg:text-xl md:text-xl  sm:text-base rounded-bl-4xl rounded-tr-4xl font-normal whitespace-nowrap ${
                   !isXTurn ? "bg-blue-500" : "bg-blue-200"
                 } text-black`}
               >
                 {UserName.PlayerName}
               </div>
               <div
-                className={`w-[20vw] px-4 py-2 text-sm lg:text-xl md:text-xl sm:text-base rounded-br-4xl rounded-tl-4xl font-normal whitespace-nowrap ${
+                className={`truncate w-[20vw] px-4 py-2 text-sm lg:text-xl md:text-xl sm:text-base rounded-br-4xl rounded-tl-4xl font-normal whitespace-nowrap ${
                   isXTurn ? "bg-red-500" : "bg-red-200"
                 } text-black`}
               >
@@ -224,8 +225,8 @@ const TicTacToe_Logic = () => {
                 htmlFor="X"
               >
                 <X className="h-6 w-6 sm:h-8 sm:w-8 text-red-500 mr-2" />
-                <h1 className="md:w-full lg:w-full w-[40vw] flex-1 bg-transparent outline-none text-lg text-foreground placeholder:text-gray-400">
-                  {UserName.PlayerName}
+                <h1 className=" md:w-full lg:w-full w-[40vw] flex-1 bg-transparent outline-none text-lg text-foreground placeholder:text-gray-400">
+                  <p className="truncate w-[80%]">{UserName.PlayerName}</p>
                 </h1>
               </label>
               <h1>VS</h1>

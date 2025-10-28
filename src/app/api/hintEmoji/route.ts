@@ -31,7 +31,9 @@ export async function POST(req: NextRequest) {
     );
 
     const data = await response.json();
+
     const hint = data.choices?.[0]?.message?.content || "No hint found.";
+
     return NextResponse.json({ hint });
   } catch (error) {
     console.error("Error generating hint:", error);

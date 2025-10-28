@@ -6,9 +6,10 @@ export function showXP(
 ) {
   switch (type) {
     case "win":
-      toast.custom((t) => (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      toast.custom((t: any) => (
         <div
-          className={`translate-x-[50%] translate-y-30 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
+          className={`translate-x-[50%] translate-y-40 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
             t.visible ? "opacity-100" : "opacity-0"
           }`}
           style={{
@@ -25,9 +26,10 @@ export function showXP(
       break;
 
     case "lose":
-      toast.custom((t) => (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      toast.custom((t: any) => (
         <div
-          className={`translate-x-[50%] translate-y-30 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
+          className={`translate-x-[50%] translate-y-40 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
             t.visible ? "opacity-100" : "opacity-0"
           }`}
           style={{
@@ -42,9 +44,10 @@ export function showXP(
       break;
 
     case "draw":
-      toast.custom((t) => (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      toast.custom((t: any) => (
         <div
-          className={`translate-x-[50%] translate-y-30 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
+          className={`translate-x-[50%] translate-y-40 lg:translate-x-85 lg:translate-y-35 font-bold text-xl animate-xp-toast ${
             t.visible ? "opacity-100" : "opacity-0"
           }`}
           style={{
