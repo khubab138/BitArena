@@ -55,7 +55,7 @@ const MemoryGame_Logic: React.FC = () => {
   //Level Handling
   function handleSizeButton(): void {
     inputSize === "easy"
-      ? setSize(2)
+      ? setSize(8)
       : inputSize === "medium"
       ? setSize(12)
       : inputSize === "hard" && setSize(16);

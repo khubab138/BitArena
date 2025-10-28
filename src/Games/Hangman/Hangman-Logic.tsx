@@ -58,6 +58,8 @@ const Hangman_Logic = () => {
   }, [addGuessedLetter]);
 
   // Handle Enter
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key !== "Enter") return;
@@ -97,9 +99,6 @@ const Hangman_Logic = () => {
       showXP("draw", 20);
     }
   }, [isWinner, isLoser, hint]);
-
-  console.log("check", isWinner, isLoser, hint);
-  console.log("XP", xp);
 
   //setting a data to server
   useEffect(() => {

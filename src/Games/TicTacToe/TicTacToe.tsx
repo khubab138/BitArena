@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card } from "@/components/ui/card";
+
 import TicTacToe_Logic from "./TicTacToe-Logic";
 
 export default function TicTacToe() {

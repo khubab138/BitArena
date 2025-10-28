@@ -13,7 +13,7 @@ import { showXP } from "@/components/XPAmimation";
 const TicTacToe_Logic = () => {
   const [inputValue, setInputValue] = useState("3");
   const [matrixSize, setMatrixSize] = useState(0);
-  const [gameState, setGameState] = useState<string[] | any[]>([]);
+  const [gameState, setGameState] = useState<(string | null | number)[]>([]);
   const [isXTurn, setIsXTurn] = useState(false);
   const [opponent, setOpponent] = useState("");
   const [ai, setAi] = useState(false);
@@ -100,7 +100,7 @@ const TicTacToe_Logic = () => {
       if (winner) return;
       let a = 0;
       let b = 1;
-      let c = 2;
+      const c = 2;
       gameState[clickedIndex[a]] = null;
       gameState[clickedIndex[b]] = null;
       gameState[clickedIndex[c]] = null;
@@ -111,7 +111,7 @@ const TicTacToe_Logic = () => {
       setDraw(true);
     }
 
-    let i = index;
+    const i = index;
     setClickedIndex((prev) => [...prev, i]);
     const updatedState = [...gameState];
     updatedState[index] = isXTurn ? "X" : "O";
@@ -132,14 +132,14 @@ const TicTacToe_Logic = () => {
       gameState[clickedIndex[c]] = null;
       a++;
       b++;
+      c++;
       setClickedIndex(clickedIndex.slice(-2));
     }
 
-    let i = index;
+    const i = index;
     setClickedIndex((prev) => [...prev, i]);
 
     const aiResponse = await fetchAIMove(gameState);
-    if (aiResponse) [console.log("ai", aiResponse)];
     isXTurn && setGameState(aiResponse);
     const updatedState = [...gameState];
     updatedState[index] = !isXTurn && "O";

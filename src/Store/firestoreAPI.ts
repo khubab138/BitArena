@@ -1,4 +1,5 @@
 import db from "@/fireStore/firestoreConfig";
+import { UserData } from "@/lib/type";
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
@@ -7,36 +8,31 @@ export const firestoreapi = createApi({
   baseQuery: fakeBaseQuery(),
   tagTypes: ["USERS"],
   endpoints: (builder) => ({
-    getUsers: builder.query({
+    getUsers: builder.query<UserData | undefined, string>({
       async queryFn(id) {
         try {
           const ref = doc(db, "users", id);
           const userSnap = await getDoc(ref);
 
           if (!userSnap?.exists()) {
-            return { error: { message: "User not found" } };
+            return { data: undefined };
           }
 
           const data = userSnap.data();
 
-          // Safely handle timestamps
-          const createdAt = data.createdAt?.toDate?.().toISOString?.() ?? null;
-
           return {
             data: {
               id: userSnap.id,
-              ...data,
-              createdAt, // Overwrite to make serializable
+              ...(data as Omit<UserData, "id">),
             },
           };
         } catch (error) {
-          return { error: { message: (error as Error)?.message } };
+          return { error: error as { message: string } };
         }
       },
 
-      // ✅ This avoids indexOf crash
       providesTags: (result, error, id) =>
-        result ? [{ type: "USERS", id }] : [],
+        result ? [{ type: "USERS", id }] : [{ type: "USERS", id: "LIST" }],
     }),
 
     setUser: builder.mutation({

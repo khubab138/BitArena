@@ -4,6 +4,9 @@ import Link from "next/link";
 import { useTheme } from "./context/theme-provider";
 import Navigations from "./Navigations";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import logo1 from "../../public/logo1.svg";
+import logo2 from "../../public/logo2.svg";
+import Image from "next/image";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -19,8 +22,10 @@ const Header = () => {
           href={"/"}
           className="z-50 cursor-pointer  flex items-center col-span-1 row-start-1 col-start-2 md:col-start-1 md:justify-self-start justify-self-center  "
         >
-          <img
-            src={isDark ? "logo1.svg" : "logo2.svg"}
+          <Image
+            src={isDark ? logo1 : logo2}
+            height={10}
+            width={50}
             alt="JigsawBrain"
             className="lg:h-12 h-8 flex "
           />

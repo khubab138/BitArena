@@ -1,5 +1,6 @@
-// utils/aiAgent.ts
-export const fetchAIMove = async (state: string[] | any[]): Promise<any> => {
+export const fetchAIMove = async (
+  state: (string | null)[]
+): Promise<(string | null)[]> => {
   try {
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -23,7 +24,7 @@ export const fetchAIMove = async (state: string[] | any[]): Promise<any> => {
               role: "user",
               content: `I'm playing O and you're playing X. Here's the current game state as a flat array of elements: ${state}.
 
-Each cell is either "O", "X", or null. Please make your move (as X) and return ONLY the updated array in this ** [null, null, null, null, 'O', null, null, null, null]** format — do not include any quotes, text, or code blocks. Just respond with the array.`,
+Each cell is either "O", "X", or null. Please make your move (as X) and return ONLY the updated array in this [null, null, null, null, 'O', null, null, null, null] format — do not include any quotes, text, or code blocks. Just respond with the array.`,
             },
           ],
         }),
@@ -31,10 +32,18 @@ Each cell is either "O", "X", or null. Please make your move (as X) and return O
     );
 
     const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-    const splited = content.split(",");
 
-    return splited;
+    const content: string = data.choices?.[0]?.message?.content ?? "";
+
+    // Parse AI response safely
+    const parsed: (string | null)[] = content
+      .replace(/\[|\]|'/g, "") // remove brackets and quotes
+      .split(",")
+      .map((cell) =>
+        cell.trim() === "null" ? null : (cell.trim() as "X" | "O")
+      );
+
+    return parsed;
   } catch (error) {
     console.error("Error generating AI move:", error);
     throw error;

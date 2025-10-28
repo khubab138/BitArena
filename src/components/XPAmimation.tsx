@@ -1,7 +1,5 @@
-// utils/xpToast.ts
 import { toast } from "sonner";
 
-// Main XP Toast function
 export function showXP(
   type: "win" | "lose" | "draw" | "custom",
   amount?: number

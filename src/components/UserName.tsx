@@ -1,8 +1,8 @@
 "use client";
 
+import { setUsers } from "@/Store/userSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getName } from "@/Store/userSlice";
 
 interface Props {
   firstName: string;
@@ -13,7 +13,7 @@ const ClientDispatcher = ({ firstName }: Props) => {
 
   useEffect(() => {
     if (firstName) {
-      dispatch(getName(firstName));
+      // dispatch(setUsers(firstName));
     }
   }, [firstName, dispatch]);
 

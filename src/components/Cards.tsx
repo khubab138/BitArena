@@ -51,7 +51,7 @@ const Cards: React.FC<CardProps> = ({
           </div>
         )}
       </div>
-      {/* Lower content area (white card body) */}
+
       <div className="h-1/2 bg-[oklch(1 0 0)]">
         <CardHeader className=" p-0">
           <CardTitle className="text-2xl text-center font-bold text-[oklch(0.334_0.009_256.7)]">
@@ -61,10 +61,7 @@ const Cards: React.FC<CardProps> = ({
 
         <CardContent className="p-0 mt-3">
           <div className="flex items-center justify-center">
-            <Button
-              //   onClick={onPlay}
-              className="inline-flex bg-[oklch(0.334_0.009_256.7)] items-center gap-2 px-3 py-1.5 rounded-full text-sm"
-            >
+            <Button className="inline-flex bg-[oklch(0.334_0.009_256.7)] items-center gap-2 px-3 py-1.5 rounded-full text-sm">
               Play Now
             </Button>
           </div>

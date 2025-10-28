@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card } from "@/components/ui/card";
+
 import Hangman_Logic from "./Hangman-Logic";
 
 export default function Hangman() {

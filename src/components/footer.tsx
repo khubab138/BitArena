@@ -1,4 +1,4 @@
-import { Github, LinkedinIcon, Mail } from "lucide-react";
+import { Github, LinkedinIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 

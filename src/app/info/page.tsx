@@ -12,9 +12,8 @@ import { RootState } from "@/Store/store";
 import { useSelector } from "react-redux";
 import { UserState } from "@/lib/type";
 import { useUser } from "@clerk/clerk-react";
-import { current } from "@reduxjs/toolkit";
 
-const page = () => {
+const InfoPage = () => {
   const form = useRef<HTMLFormElement>(null);
   const UserData: UserState = useSelector((state: RootState) => state.User);
   const { isSignedIn } = useUser();
@@ -67,7 +66,7 @@ const page = () => {
         <div className="px-4 mt-10 w-full flex flex-col md:flex-row justify-between gap-6">
           <div className="mb-10 flex flex-col justify-start items-start h-full w-full md:w-[45%] ">
             <h1 className=" cursor-pointer roboto text-xl md:text-3xl font-bold bg-gradient-to-r  from-chart-2 to-muted-foreground   bg-clip-text text-transparent">
-              FAQ's
+              FAQ&apos;s
             </h1>
             <Accordion
               type="single"
@@ -77,24 +76,24 @@ const page = () => {
             >
               <AccordionItem value="item-1" className="border-none">
                 <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-chart-2 transition-colors">
-                  🛠️ What should I do if the game doesn’t work?
+                  🛠️ What should I do if the game doesn&apos;t work?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-muted-foreground text-sm leading-relaxed">
                   <ol className="list-decimal list-inside space-y-2">
                     <li>Refresh the page or restart the app.</li>
                     <li>Check your internet connection.</li>
                     <li>
-                      Make sure you’re using the latest version of your browser
-                      or the game client.
+                      Make sure you&apos;re using the latest version of your
+                      browser or the game client.
                     </li>
                     <li>
-                      If the issue continues, contact our support team — we’ll
-                      help you out quickly.
+                      If the issue continues, contact our support team —
+                      we&apos;ll help you out quickly.
                     </li>
                   </ol>
                   <p className="text-foreground/80">
                     Your progress and XP are stored securely in Firestore, so
-                    you won’t lose anything.
+                    you won&apos;t lose anything.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -143,7 +142,7 @@ const page = () => {
                   🎮 How do I play?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-muted-foreground text-sm leading-relaxed">
-                  <p>Here’s how to get started:</p>
+                  <p>Here&apos;s how to get started:</p>
                   <ol className="list-decimal list-inside space-y-2">
                     <li>
                       <strong>Sign up or log in</strong> using Clerk.
@@ -219,4 +218,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default InfoPage;

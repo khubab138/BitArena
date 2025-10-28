@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 
-import { Card } from "@/components/ui/card";
 import MemoryGame_Logic from "./MemoryGame-Logic";
 
 export default function MemoryGame() {

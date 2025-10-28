@@ -5,7 +5,7 @@ function Stopwatch() {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let interval: any;
+    let interval: ReturnType<typeof setInterval> | undefined;
 
     if (isRunning) {
       interval = setInterval(() => {

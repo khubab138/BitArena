@@ -19,7 +19,7 @@ export type NavItem = {
 export interface UserState {
   PlayerName: string;
   PLayerId: string;
-  PlayerEmail: String;
+  PlayerEmail: string;
   level: number;
   xp: number;
   coin: number;
@@ -35,3 +35,14 @@ export type SetUsersPayload = {
   coin: number;
   xpToNext: number;
 };
+
+export interface UserData {
+  id: string;
+  name: string;
+  email: string;
+  level: number;
+  xp: number;
+  coin: number;
+  xpToNext: number;
+  createdAt: string;
+}

@@ -13,6 +13,7 @@ const Hero = () => {
         src={isDark ? "logo.png" : "logo_light.png"}
         alt="Jigsaw_puzzle"
       />
+
       <div>
         <h1 className="text-4xl font-bold m-0">BitArena</h1>
         <p className="text-lg text-gray-600 m-0">Unwind & Refocus Your Mind</p>

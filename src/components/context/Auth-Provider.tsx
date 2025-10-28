@@ -18,7 +18,7 @@ export default function AuthProvider({
   const [setUser, { isSuccess: setSuccess, isLoading: setLoading }] =
     useSetUserMutation();
 
-  const { data, isLoading: getLoading } = useGetUsersQuery(user?.id, {
+  const { data, isLoading: getLoading } = useGetUsersQuery(user?.id ?? "", {
     skip: !user?.id,
   });
 
@@ -29,10 +29,6 @@ export default function AuthProvider({
         data: {
           name: user.fullName ?? "",
           email: user.emailAddresses?.[0]?.emailAddress ?? "",
-          createdAt:
-            user.createdAt instanceof Date
-              ? user.createdAt.toISOString()
-              : new Date(user.createdAt ?? "").toISOString(),
         },
       });
     }

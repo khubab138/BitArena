@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import DeveloperProfile from "../../../public/DeveloperProfile.jpg";
 
 const page = () => {
   return (
@@ -56,8 +58,8 @@ const page = () => {
             href="https://www.linkedin.com/in/muhammadkhubabsiddiqui"
             className="cursor-pointer h-20 w-25 md:h-30 md:w-30 overflow-hidden rounded-full border-3 border-chart-2"
           >
-            <img
-              src="DeveloperProfile.jpg"
+            <Image
+              src={DeveloperProfile}
               alt="muhammad khubab siddiqui"
               className=""
             />

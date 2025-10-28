@@ -7,7 +7,6 @@ export default function GameDashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-  playerinfo: React.ReactNode;
 }>) {
   const userInfo = useSelector((state: RootState) => state.User);
 
